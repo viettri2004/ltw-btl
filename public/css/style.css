@@ -286,3 +286,32 @@
     padding-bottom: 10px;
     border-bottom: 2px solid #f0f0f0;
 }
+
+
+
+
+
+
+
+/* --- Pagination Styles --- */
+.pagination .page-link {
+    color: #333;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    color: #0d6efd;
+}
+
+/* --- Price Filter Inputs --- */
+.price-input {
+    font-size: 0.9rem;
+    padding: 5px;
+}
