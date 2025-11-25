@@ -43,7 +43,7 @@ include '../app/Views/layouts/header.php';
     <a href="#"><img src="banner-side.jpg" class="img-fluid rounded shadow"></a>
 </div>
 
-<div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+<!-- <div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 1050px;">
@@ -54,10 +54,34 @@ include '../app/Views/layouts/header.php';
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
     <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-</div>
+</div> -->
 
 <div class="container pb-5 position-relative">
     
+
+
+
+
+
+<div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 850px;">
+        </div>
+        <div class="carousel-item">
+            <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 850px;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>
+
+
+
+
+
+
+
     <div class="mb-5">
         <h4 class="fw-bold mb-4 border-start border-4 border-primary ps-3">Danh mục nổi bật</h4>
         <div class="row g-3">
