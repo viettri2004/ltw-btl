@@ -1,0 +1,288 @@
+/* --- Product List Styles --- */
+.product-card {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Cố định khung ảnh và hiệu ứng Zoom */
+.product-img-box {
+    width: 100%;
+    height: 250px; /* Chiều cao cố định */
+    overflow: hidden; /* Ẩn phần ảnh bị zoom ra ngoài */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Hoặc 'cover' tùy nhu cầu */
+    transition: transform 0.5s ease;
+}
+
+/* Hover vào card thì ảnh zoom 10% */
+.product-card:hover .product-img-box img {
+    transform: scale(1.1);
+}
+
+/* --- Detail Page Styles --- */
+.detail-gallery-thumb {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.detail-gallery-thumb:hover, .detail-gallery-thumb.active {
+    opacity: 1;
+    border-color: #000;
+}
+.btn-buy-now {
+    border: 1px solid #ddd;
+    color: #333;
+}
+.btn-buy-now:hover {
+    background-color: #f8f9fa;
+}
+
+
+
+
+
+
+
+
+
+/* public/css/style.css */
+.product-card {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.product-img-box {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+.product-card:hover .product-img-box img {
+    transform: scale(1.1); /* Zoom 10% */
+}
+.detail-gallery-thumb {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    opacity: 0.7;
+    transition: 0.3s;
+    object-fit: cover;
+}
+.detail-gallery-thumb:hover, .detail-gallery-thumb.active {
+    opacity: 1;
+    border-color: #000;
+}
+
+
+
+
+/* --- Swiper Slider Custom --- */
+.swiper-button-next, .swiper-button-prev {
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: #333; 
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 18px;
+    font-weight: bold;
+}
+.product-slider {
+    padding-bottom: 40px; /* Chừa chỗ cho thanh pagination nếu cần */
+}
+
+
+
+
+
+
+
+/* --- 1. Side Banners (Quảng cáo 2 bên) --- */
+.side-banner {
+    position: fixed;
+    top: 600px; /* Canh chỉnh độ cao để không đè lên Header */
+    width: 15%; /* Kích thước banner */
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* LOGIC CANH GIỮA:
+   Container của Bootstrap ~1320px. Một nửa là 660px.
+   Khoảng cách an toàn (gap) = 20px.
+   => Vị trí banner = 50% màn hình + 660px + 20px
+*/
+
+.side-left {
+    right: calc(50% + 680px); /* Đẩy sang bên trái của khung container */
+    text-align: right;
+}
+
+.side-right {
+    left: calc(50% + 680px); /* Đẩy sang bên phải của khung container */
+    text-align: left;
+}
+
+/* Ẩn banner nếu màn hình nhỏ hơn 1600px (vì sẽ không đủ chỗ hiển thị, tránh đè nội dung) */
+@media (max-width: 1600px) {
+    .side-banner { display: none; }
+}
+
+/* --- 2. Swiper Navigation (Mũi tên điều hướng) --- */
+.swiper-button-next, .swiper-button-prev {
+    background-color: #fff; /* Nền trắng */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Hình tròn */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Đổ bóng nổi */
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #eee;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 20px;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+/* Đẩy mũi tên ra ngoài khung sản phẩm một chút */
+.swiper-button-prev { left: -25px; }
+.swiper-button-next { right: -25px; }
+
+/* Tạo khoảng trống dưới cùng để không bị cắt bóng đổ của sản phẩm hàng dưới */
+.product-slider {
+    padding: 10px 10px 20px 10px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Style cho Block Danh mục (New Section) --- */
+.category-block-header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 15px;
+}
+
+.cat-tab-btn {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    padding: 10px 20px;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cat-tab-btn:hover, .cat-tab-btn.active {
+    color: #d70018; /* Màu đỏ đặc trưng */
+    border-bottom-color: #d70018;
+    background-color: rgba(215, 0, 24, 0.05);
+}
+
+.brand-pill {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    color: #333;
+    background: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.brand-pill:hover {
+    border-color: #d70018;
+    color: #d70018;
+    background: #fff5f5;
+}
+
+/* Tùy chỉnh mũi tên cho slider này nhỏ hơn chút để hợp layout */
+.category-slider .swiper-button-next, 
+.category-slider .swiper-button-prev {
+    width: 35px;
+    height: 35px;
+}
+.category-slider .swiper-button-next:after, 
+.category-slider .swiper-button-prev:after {
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Sidebar Filter Styles --- */
+.filter-sidebar .list-group-item {
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.filter-sidebar .list-group-item:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.filter-sidebar .list-group-item.active {
+    background-color: #e7f1ff; /* Màu xanh nhạt */
+    color: #0d6efd; /* Màu chữ xanh đậm */
+    font-weight: 600;
+}
+
+.filter-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
