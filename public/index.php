@@ -263,6 +263,17 @@ include '../app/Views/layouts/header.php';
     </div>
 </div>
 
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle-fill me-2"></i> Đã thêm sản phẩm vào giỏ!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
 <?php include '../app/Views/layouts/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -322,4 +333,61 @@ include '../app/Views/layouts/header.php';
         }
     });
 
+</script>
+
+
+<script>
+    // Bắt sự kiện click cho TẤT CẢ các nút có class .btn-add-to-cart
+    // Dùng Event Delegation để đảm bảo hoạt động kể cả với các nút trong Slider
+    document.addEventListener('click', function(e) {
+        // Kiểm tra nếu click vào nút hoặc icon bên trong nút
+        const btn = e.target.closest('.btn-add-to-cart');
+        
+        if (btn) {
+            e.preventDefault(); // Chặn hành động mặc định
+
+            // Hiệu ứng loading nhỏ (tùy chọn)
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+            btn.disabled = true;
+
+            // Lấy dữ liệu từ data attributes
+            const formData = new FormData();
+            formData.append('product_id', btn.getAttribute('data-id'));
+            formData.append('product_name', btn.getAttribute('data-name'));
+            formData.append('product_price', btn.getAttribute('data-price'));
+            formData.append('product_image', btn.getAttribute('data-image'));
+            formData.append('quantity', 1);
+
+            // Gửi AJAX fetch
+            fetch('cart_add.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // 1. Cập nhật số lượng trên Header
+                    const badge = document.getElementById('cart-badge');
+                    if (badge) badge.innerText = data.total_items;
+
+                    // 2. Hiển thị Toast thông báo thành công
+                    const toastEl = document.getElementById('liveToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                } else {
+                    alert('Có lỗi xảy ra: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Lỗi kết nối server');
+            })
+            .finally(() => {
+                // Trả lại trạng thái nút ban đầu
+                btn.innerHTML = originalIcon;
+                btn.disabled = false;
+            });
+        }
+    });
 </script>

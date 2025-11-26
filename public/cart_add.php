@@ -1,34 +1,51 @@
 <?php
 session_start();
 
+// Kiểm tra request method
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Lấy dữ liệu từ form
-    $id = $_POST['product_id'];
-    $name = $_POST['product_name']; // Lưu ý: Form ở index.php cần gửi thêm hidden field này hoặc phải query DB để lấy tên
-    $price = $_POST['product_price'];
+    
+    // Lấy dữ liệu từ Ajax gửi sang
+    $id = $_POST['product_id'] ?? null;
+    $name = $_POST['product_name'] ?? '';
+    $price = $_POST['product_price'] ?? 0;
+    $image = $_POST['product_image'] ?? '';
     $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
-    $image = isset($_POST['product_image']) ? $_POST['product_image'] : ''; // Cần thêm hidden field image ở form
 
-    // Khởi tạo giỏ hàng
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
+    if ($id) {
+        // Khởi tạo giỏ hàng
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
 
-    // Logic thêm hoặc cộng dồn
-    if (isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][$id]['quantity'] += $quantity;
+        // Logic thêm/cộng dồn
+        if (isset($_SESSION['cart'][$id])) {
+            $_SESSION['cart'][$id]['quantity'] += $quantity;
+        } else {
+            $_SESSION['cart'][$id] = [
+                'id' => $id,
+                'name' => $name,
+                'price' => $price,
+                'quantity' => $quantity,
+                'image' => $image
+            ];
+        }
+
+        // Tính tổng số lượng sản phẩm trong giỏ để trả về client
+        $total_items = 0;
+        foreach ($_SESSION['cart'] as $item) {
+            $total_items += $item['quantity'];
+        }
+
+        // Trả về JSON thành công
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Đã thêm sản phẩm vào giỏ!',
+            'total_items' => $total_items
+        ]);
     } else {
-        $_SESSION['cart'][$id] = [
-            'id' => $id,
-            'name' => $name,
-            'price' => $price,
-            'quantity' => $quantity,
-            'image' => $image
-        ];
+        // Lỗi thiếu ID
+        echo json_encode(['status' => 'error', 'message' => 'Lỗi dữ liệu sản phẩm']);
     }
-
-    // Redirect trở lại trang trước đó
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit();
 }
 ?>

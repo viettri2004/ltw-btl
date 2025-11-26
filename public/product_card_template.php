@@ -20,7 +20,6 @@
 
         <div class="mt-auto">
             <div class="fw-bold text-danger fs-6"><?= number_format($prod['price'], 0, ',', '.') ?>đ</div>
-            
             <?php if(!empty($prod['old_price']) && $prod['old_price'] > $prod['price']): ?>
                 <div class="small text-decoration-line-through text-muted" style="font-size: 0.8rem;"><?= number_format($prod['old_price'], 0, ',', '.') ?>đ</div>
             <?php endif; ?>
@@ -29,14 +28,15 @@
                 <div class="text-warning small" style="font-size: 0.7rem;">
                     <i class="bi bi-star-fill"></i> <?= $prod['rating'] ?? 5 ?>
                 </div>
-                <form action="cart_add.php" method="POST">
-                    <input type="hidden" name="product_id" value="<?= $prod['id'] ?>">
-                    <input type="hidden" name="product_name" value="<?= $prod['name'] ?>">
-                    <input type="hidden" name="product_price" value="<?= $prod['price'] ?>">
-                    <input type="hidden" name="product_image" value="<?= $prod['image'] ?? '' ?>">
-                    <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="btn btn-sm btn-light rounded-circle border"><i class="bi bi-cart-plus"></i></button>
-                </form>
+                
+                <button type="button" 
+                        class="btn btn-sm btn-light rounded-circle border btn-add-to-cart"
+                        data-id="<?= $prod['id'] ?>"
+                        data-name="<?= $prod['name'] ?>"
+                        data-price="<?= $prod['price'] ?>"
+                        data-image="<?= $prod['image'] ?? '' ?>">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
             </div>
         </div>
     </div>

@@ -29,9 +29,10 @@
                         <input class="form-control form-control-sm me-2 bg-light border-0" type="search" name="q" placeholder="Tìm sản phẩm..." aria-label="Search" value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>">
                     </form>
 
+                    
                     <a href="cart.php" class="text-dark fs-5 position-relative me-2">
                         <i class="bi bi-cart3"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
                             <?php 
                                 $cart_count = 0;
                                 if(isset($_SESSION['cart'])) {
