@@ -2,13 +2,14 @@
 .cont-all {
     display: grid;
     place-items: center;
-    grid-template-columns: auto 1fr auto;
+    /* grid-template-columns: auto 1fr auto; */
+    grid-template-columns: 1fr minmax(auto, 1320px) 1fr;
     grid-template-rows: 1fr;
     background-image: url(../main-background.jpg);
     background-size: cover;
     background-position: center;
     min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao */
-
+    align-items: start; /* QUAN TRỌNG: Để sticky hoạt động */
 }
 .all-body {
     grid-column: 2 / 3; /* Đặt vào cột giữa */
@@ -147,30 +148,61 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- 1. Side Banners (Quảng cáo 2 bên) --- */
 .side-banner {
-    position: fixed;
-    top: 600px; /* Canh chỉnh độ cao để không đè lên Header */
-    width: 15%; /* Kích thước banner */
+    position: sticky;
+    top: 180px; /* Canh chỉnh độ cao để không đè lên Header */
+    
+    width: 68%; /* Kích thước banner */
+    max-width: 255px; /* Giới hạn kích thước tối đa */
     z-index: 10;
     transition: all 0.3s ease;
 }
 
-/* LOGIC CANH GIỮA:
-   Container của Bootstrap ~1320px. Một nửa là 660px.
-   Khoảng cách an toàn (gap) = 20px.
-   => Vị trí banner = 50% màn hình + 660px + 20px
-*/
 
 .side-left {
-    right: calc(50% + 680px); /* Đẩy sang bên trái của khung container */
-    text-align: right;
+    grid-column: 1 / 2;
+    justify-self: end; /* Đẩy sang phải của cột 1 */
+    margin-right: 20px; /* Khoảng cách an toàn */
 }
 
+/* Banner Phải: Nằm ở cột 3, canh lề trái (sát vào nội dung chính) */
 .side-right {
-    left: calc(50% + 680px); /* Đẩy sang bên phải của khung container */
-    text-align: left;
+    grid-column: 3 / 4;
+    justify-self: start; /* Đẩy sang trái của cột 3 */
+    margin-left: 20px; /* Khoảng cách an toàn */
 }
+
+/* Ảnh trong banner */
+.side-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
 
 /* Ẩn banner nếu màn hình nhỏ hơn 1600px (vì sẽ không đủ chỗ hiển thị, tránh đè nội dung) */
 @media (max-width: 1600px) {
@@ -339,7 +371,10 @@
     font-size: 0.9rem;
     padding: 5px;
 }
-
+.card-brand-item {
+    height: 180px;
+    object-fit: cover;
+}
 /* --- Thêm style cho phần Tin tức --- */
 .news-hidden {
     display: none;
@@ -354,7 +389,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+    /* -webkit-line-clamp: 3;  */
     -webkit-box-orient: vertical;
 }
 .card:hover {

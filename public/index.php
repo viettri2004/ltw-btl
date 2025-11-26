@@ -72,7 +72,7 @@ $brands = [
     ['img' => 'https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/tile/Apple-iPhone-16-Pro-hero-240909-lp.jpg.landing-big_2x.jpg', 'link' => 'https://www.apple.com/vn/'],
     ['img' => 'https://dlcdnwebimgs.asus.com/files/media/b750b172-b8c8-462b-9f28-92519392fce6/v1/img/kv/kv.jpg', 'link' => 'https://www.asus.com/vn/'],
     ['img' => 'https://www.sammobile.com/wp-content/uploads/2023/05/Samsung-x-Lazada-Super-Brand-Day-2023-Galaxy-Tab-S7-FE-Deal.png', 'link' => 'https://www.samsung.com/vn/'],
-    ['img' => 'https://www.matterhorncommunications.com/wp-content/uploads/2018/01/lmt9118-1515232240623.jpg', 'link' => 'https://www.mi.com/vn/']
+    ['img' => 'https://cdn2.cellphones.com.vn/insecure/rs:fill:690:300/q:90/plain/https://dashboard.cellphones.com.vn/storage/gian-hang-samsung-home.png', 'link' => 'https://www.mi.com/vn/']
 ];
 
 
@@ -80,26 +80,32 @@ include '../app/Views/layouts/header.php';
 ?>
 
 <div class="cont-all">
+    <div class="side-banner side-left d-none d-xxl-block">
+        <a href="#">
+            <img src="banner-side.jpg" class="img-fluid rounded shadow">
+        </a>
+    </div>
+
     <div class="all-body">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        <div class="side-banner side-left">
+        <!-- <div class="side-banner side-left">
             <a href="#"><img src="banner-side.jpg" class="img-fluid rounded shadow"></a>
         </div>
         <div class="side-banner side-right">
             <a href="#"><img src="banner-side.jpg" class="img-fluid rounded shadow"></a>
-        </div>
+        </div> -->
 
         <div class="container pb-5 position-relative">
             
             <div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 850px;">
+                        <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 450px;">
                     </div>
                     <div class="carousel-item">
-                        <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 850px;">
+                        <img src="banner-main.jpg" class="d-block w-100 object-fit-cover" style="max-height: 450px;">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
@@ -203,7 +209,7 @@ include '../app/Views/layouts/header.php';
 
 
         
-<!-- bạn nên thêm code vào đây -->
+
          <!-- Phần Chuyên trang thương hiệu -->
         <div class="container mb-5">
             <h4 class="fw-bold mb-4 border-start border-4 border-primary ps-3">CHUYÊN TRANG THƯƠNG HIỆU</h4>
@@ -211,7 +217,7 @@ include '../app/Views/layouts/header.php';
                 <?php foreach($brands as $brand): ?>
                 <div class="col-6 col-md-3">
                     <a href="<?= $brand['link'] ?>" target="_blank">
-                        <img src="<?= $brand['img'] ?>" class="img-fluid rounded shadow" alt="Banner thương hiệu">
+                        <img src="<?= $brand['img'] ?>" class="img-fluid rounded shadow card-brand-item" alt="Banner thương hiệu">
                     </a>
                 </div>
                 <?php endforeach; ?>
@@ -248,6 +254,12 @@ include '../app/Views/layouts/header.php';
 
 
 
+    </div>
+
+    <div class="side-banner side-right d-none d-xxl-block">
+        <a href="#">
+            <img src="banner-side.jpg" class="img-fluid rounded shadow">
+        </a>
     </div>
 </div>
 
