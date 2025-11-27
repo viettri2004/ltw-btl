@@ -69,10 +69,10 @@ try {
 } catch(Exception $e) { $news_list = []; }
 // Danh sách Thương hiệu (Tĩnh - Không cần DB)
 $brands = [
-    ['img' => 'https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/tile/Apple-iPhone-16-Pro-hero-240909-lp.jpg.landing-big_2x.jpg', 'link' => 'https://www.apple.com/vn/'],
-    ['img' => 'https://dlcdnwebimgs.asus.com/files/media/b750b172-b8c8-462b-9f28-92519392fce6/v1/img/kv/kv.jpg', 'link' => 'https://www.asus.com/vn/'],
-    ['img' => 'https://www.sammobile.com/wp-content/uploads/2023/05/Samsung-x-Lazada-Super-Brand-Day-2023-Galaxy-Tab-S7-FE-Deal.png', 'link' => 'https://www.samsung.com/vn/'],
-    ['img' => 'https://cdn2.cellphones.com.vn/insecure/rs:fill:690:300/q:90/plain/https://dashboard.cellphones.com.vn/storage/gian-hang-samsung-home.png', 'link' => 'https://www.mi.com/vn/']
+    ['img' => 'pic/brand1.webp', 'link' => 'products.php?q=iphone'],
+    ['img' => 'pic/brand2.webp', 'link' => 'products.php?q=asus'],
+    ['img' => 'pic/brand3.webp', 'link' => 'products.php?cat_id=1'],
+    ['img' => 'pic/brand4.png', 'link' => 'products.php?q=samsung']
 ];
 
 
@@ -81,7 +81,7 @@ include '../app/Views/layouts/header.php';
 
 <div class="cont-all">
     <div class="side-banner side-left d-none d-xxl-block">
-        <a href="#">
+        <a href="products.php">
             <img src="banner-side.jpg" class="img-fluid rounded shadow">
         </a>
     </div>
@@ -150,10 +150,10 @@ include '../app/Views/layouts/header.php';
                 <div class="row g-3">
                     <div class="col-12 col-xl-3 d-none d-xl-block">
                         <div class="d-flex flex-column gap-3 h-100">
-                            <a href="#" class="flex-grow-1 overflow-hidden rounded shadow-sm">
+                            <a href="products.php" class="flex-grow-1 overflow-hidden rounded shadow-sm">
                                 <img src="banner-side.jpg" class="w-100 h-100 object-fit-cover hover-zoom">
                             </a>
-                            <a href="#" class="flex-grow-1 overflow-hidden rounded shadow-sm">
+                            <a href="products.php" class="flex-grow-1 overflow-hidden rounded shadow-sm">
                                 <img src="banner-side.jpg" class="w-100 h-100 object-fit-cover hover-zoom">
                             </a>
                         </div>
@@ -257,7 +257,7 @@ include '../app/Views/layouts/header.php';
     </div>
 
     <div class="side-banner side-right d-none d-xxl-block">
-        <a href="#">
+        <a href="products.php">
             <img src="banner-side.jpg" class="img-fluid rounded shadow">
         </a>
     </div>
