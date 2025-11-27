@@ -195,7 +195,7 @@ INSERT INTO products (category_id, name, price, old_price, image, image1, image2
 (6, 'DJI Osmo Pocket 3', 12990000, 14990000, 'pic/product/6050.webp', '', '', '', 'N/A', 'N/A', '2 inch Rotatable', '166 phút', 'Cảm biến 1 inch, màn hình xoay dọc ngang.', 5.0, 1),
 (6, 'Insta360 GO 3 64GB', 9990000, 10990000, 'pic/product/6060.webp', '', '', '', 'N/A', 'N/A', '2.2 inch Flip', '170 phút', 'Camera hành trình nhỏ nhất thế giới.', 4.7, 0),
 (6, 'Sony A6400 Kit 16-50mm', 22990000, 24990000, 'pic/product/6070.webp', '', '', '', 'BIONZ X', 'N/A', '3 inch Tilt', '360 shots', 'Lấy nét mắt thời gian thực, best seller tầm trung.', 4.8, 0),
-(6, 'Panasonic Lumix GH6 Body', 41990000, 46990000, 'pic/product/6080.webp', '', '', '', 'Venus Engine', 'N/A', '3 inch Vari-angle', 'N/A', 'Quái vật quay phim chuẩn điện ảnh.', 4.7, 0),
+(6, 'Sony Alpha ILCE-7CM2', 41990000, 46990000, 'pic/product/6080.webp', '', '', '', 'Venus Engine', 'N/A', '3 inch Vari-angle', 'N/A', 'Quái vật quay phim chuẩn điện ảnh.', 4.7, 0),
 (6, 'Canon EOS R8 Body', 36990000, 3990000, 'pic/product/6090.webp', '', '', '', 'DIGIC X', 'N/A', '3 inch', 'N/A', 'Full-frame nhẹ nhất của Canon.', 4.7, 0),
 (6, 'DJI Mini 4 Pro', 21490000, 23490000, 'pic/product/6100.webp', '', '', '', 'N/A', 'N/A', 'N/A', '34 phút', 'Flycam mini an toàn nhất với cảm biến đa hướng.', 4.9, 1),
 (6, 'GoPro Hero 11 Black Mini', 6990000, 8490000, 'pic/product/6110.webp', '', '', '', 'GP2', 'N/A', 'Không màn hình', 'Enduro', 'Nhỏ gọn, gắn mũ bảo hiểm cực tiện.', 4.5, 0),
@@ -218,14 +218,6 @@ CREATE TABLE news (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. THÊM DỮ LIỆU TIN TỨC MẪU (Ảnh thật từ trang tin công nghệ)
--- Chèn dữ liệu mới với đường dẫn ảnh local
--- INSERT INTO news (title, image) VALUES 
--- ('Xiaomi POCO Pad ra mắt: Chip Snapdragon 7s Gen 2, màn hình 120Hz', 'pic/news1.jpg'),
--- ('Trải nghiệm Apple Intelligence: Tóm tắt web thông minh trên Safari', 'pic/news2.jpg'),
--- ('Top ứng dụng quay màn hình iPhone chất lượng nhất 2025', 'pic/news3.jpg'),
--- ('POCO F6 Pro ra mắt: Snapdragon 8 Gen 2, sạc nhanh 120W siêu tốc', 'pic/news4.jpg');
-
 
 
 
@@ -247,113 +239,6 @@ INSERT INTO news (title, image, link) VALUES
 ('Samsung Galaxy Tab S10: Màn hình OLED 120Hz', 'pic/news14.jpg', 'https://example.com/news/galaxy-tab-s10'),
 ('Xiaomi Mix Flip: Điện thoại gập gọn gàng', 'pic/news15.jpg', 'https://example.com/news/xiaomi-mix-flip'),
 ('Asus Zenfone 12: Camera gimbal ổn định', 'pic/news16.jpg', 'https://example.com/news/zenfone-12');
-
-
-
-
-
--- -----------------------------------------------------------------------
--- 1. LAPTOP (Nguồn: TGDD CDN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, ram, screen, battery, rating, is_featured) VALUES
-(1, 'MacBook Air M1 2020', 18490000, 22990000, 'https://cdn.tgdd.vn/Products/Images/44/231244/macbook-air-m1-2020-gray-600x600.jpg', 'Apple M1', '8GB', '13.3" Retina', '49.9Wh', 4.9, 1),
-(1, 'Asus TUF Gaming F15', 19990000, 24990000, 'https://cdn.tgdd.vn/Products/Images/44/304872/asus-tuf-gaming-f15-fx506hf-i5-hn014w-1.jpg', 'i5 11400H', '8GB', '15.6" 144Hz', '48Wh', 4.7, 1),
-(1, 'HP Pavilion 15', 16990000, 18990000, 'https://cdn.tgdd.vn/Products/Images/44/306826/hp-pavilion-15-eg2082tu-i5-7c0q5pa-1.jpg', 'i5 1240P', '8GB', '15.6" IPS', '41Wh', 4.5, 0),
-(1, 'Lenovo Ideapad 3', 12490000, 14990000, 'https://cdn.tgdd.vn/Products/Images/44/306355/lenovo-ideapad-3-15iau7-i3-82rk001nvn-1.jpg', 'i3 1215U', '8GB', '15.6" FHD', '45Wh', 4.3, 0),
-(1, 'Dell Vostro 3520', 14990000, 16990000, 'https://cdn.tgdd.vn/Products/Images/44/309189/dell-vostro-3520-i5-5m2tt2-1.jpg', 'i5 1235U', '8GB', '15.6" 120Hz', '41Wh', 4.4, 0),
-(1, 'MacBook Pro 14 M3', 49990000, 52990000, 'https://cdn.tgdd.vn/Products/Images/44/318229/macbook-pro-14-inch-m3-2023-1.jpg', 'Apple M3', '8GB', '14.2" XDR', '70Wh', 5.0, 1),
-(1, 'MSI Gaming GF63', 15490000, 17990000, 'https://cdn.tgdd.vn/Products/Images/44/303500/msi-gaming-gf63-thin-11sc-i5-664vn-1.jpg', 'i5 11400H', '8GB', '15.6" 144Hz', '52.4Wh', 4.6, 0),
-(1, 'Acer Nitro 5 Tiger', 21990000, 24990000, 'https://cdn.tgdd.vn/Products/Images/44/272691/acer-nitro-5-tiger-an515-58-52sp-i5-1.jpg', 'i5 12500H', '8GB', '15.6" 144Hz', '57Wh', 4.7, 1),
-(1, 'Asus Zenbook 14 OLED', 24990000, 27990000, 'https://cdn.tgdd.vn/Products/Images/44/305495/asus-zenbook-14-oled-ux3402va-i5-km085w-1.jpg', 'i5 1340P', '16GB', '14" OLED', '75Wh', 4.8, 0),
-(1, 'Acer Aspire 7', 17990000, 21990000, 'https://cdn.tgdd.vn/Products/Images/44/305623/acer-aspire-7-gaming-a715-76g-5132-i5-nhqmesv002-1.jpg', 'i5 12450H', '8GB', '15.6" 144Hz', '50Wh', 4.5, 0),
-(1, 'Lenovo Yoga Slim 7', 26990000, 29990000, 'https://cdn.tgdd.vn/Products/Images/44/307261/lenovo-yoga-slim-7-14irp8-i7-83a4000nvn-1.jpg', 'i7 1360P', '16GB', '14" OLED', '65Wh', 4.9, 0),
-(1, 'HP 15s', 13990000, 15990000, 'https://cdn.tgdd.vn/Products/Images/44/306825/hp-15s-fq5229tu-i3-8u237pa-1.jpg', 'i3 1215U', '8GB', '15.6" FHD', '41Wh', 4.2, 0);
-
--- -----------------------------------------------------------------------
--- 2. ĐIỆN THOẠI (Nguồn: TGDD CDN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, ram, screen, battery, rating, is_featured) VALUES
-(2, 'iPhone 15 Pro Max', 29990000, 34990000, 'https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg', 'A17 Pro', '8GB', '6.7" OLED', '4422 mAh', 5.0, 1),
-(2, 'Samsung S24 Ultra', 28990000, 33990000, 'https://cdn.tgdd.vn/Products/Images/42/307174/samsung-galaxy-s24-ultra-grey-thumbnew-600x600.jpg', 'SD 8 Gen 3', '12GB', '6.8" QHD+', '5000 mAh', 4.9, 1),
-(2, 'Xiaomi 14 5G', 22990000, 24990000, 'https://cdn.tgdd.vn/Products/Images/42/314226/xiaomi-14-black-thumb-600x600.jpg', 'SD 8 Gen 3', '12GB', '6.36" OLED', '4610 mAh', 4.8, 1),
-(2, 'OPPO Reno11 F', 8490000, 8990000, 'https://cdn.tgdd.vn/Products/Images/42/321520/oppo-reno11-f-purple-thumb-600x600.jpg', 'Dimensity 7050', '8GB', '6.7" AMOLED', '5000 mAh', 4.7, 0),
-(2, 'Vivo V30e', 9490000, 10490000, 'https://cdn.tgdd.vn/Products/Images/42/321312/vivo-v30e-tim-thumb-1-600x600.jpg', 'SD 6 Gen 1', '8GB', '6.78" AMOLED', '5500 mAh', 4.6, 0),
-(2, 'Samsung Galaxy A55', 9990000, 11990000, 'https://cdn.tgdd.vn/Products/Images/42/322625/samsung-galaxy-a55-5g-xanh-thumb-1-600x600.jpg', 'Exynos 1480', '8GB', '6.6" AMOLED', '5000 mAh', 4.5, 0),
-(2, 'iPhone 13 128GB', 13990000, 16990000, 'https://cdn.tgdd.vn/Products/Images/42/251192/iphone-13-starlight-1-600x600.jpg', 'A15 Bionic', '4GB', '6.1" OLED', '3240 mAh', 4.7, 1),
-(2, 'Redmi Note 13 Pro', 6490000, 7290000, 'https://cdn.tgdd.vn/Products/Images/42/309834/xiaomi-redmi-note-13-pro-thumb-tim-600x600.jpg', 'Helio G99', '8GB', '6.67" AMOLED', '5000 mAh', 4.4, 0),
-(2, 'Samsung S23 FE', 11990000, 14890000, 'https://cdn.tgdd.vn/Products/Images/42/306994/samsung-galaxy-s23-fe-mint-thumbnew-600x600.jpg', 'Exynos 2200', '8GB', '6.4" AMOLED', '4500 mAh', 4.6, 0),
-(2, 'Realme C65', 3690000, 3990000, 'https://cdn.tgdd.vn/Products/Images/42/322364/realme-c65-purple-thumb-600x600.jpg', 'Helio G85', '6GB', '6.67" IPS', '5000 mAh', 4.2, 0),
-(2, 'Xiaomi 13T', 10990000, 12990000, 'https://cdn.tgdd.vn/Products/Images/42/309816/xiaomi-13t-xanh-duong-thumb-600x600.jpg', 'Dimensity 8200', '12GB', '6.67" 144Hz', '5000 mAh', 4.5, 0),
-(2, 'iPhone 11', 8990000, 11990000, 'https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg', 'A13 Bionic', '4GB', '6.1" IPS', '3110 mAh', 4.3, 0);
-
--- -----------------------------------------------------------------------
--- 3. TAI NGHE (Nguồn: TGDD & Sony VN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, battery, rating, is_featured) VALUES
-(3, 'AirPods Pro 2 USB-C', 5690000, 6190000, 'https://cdn.tgdd.vn/Products/Images/54/289710/airpods-pro-2-thumb-600x600.jpg', 'Apple H2', '30 giờ', 4.9, 1),
-(3, 'Sony WH-1000XM5', 7490000, 8990000, 'https://cdn.tgdd.vn/Products/Images/54/279330/sony-wh-1000xm5-bac-thumb-600x600.jpg', 'V1 + QN1', '30 giờ', 4.8, 1),
-(3, 'Galaxy Buds2 Pro', 2990000, 4990000, 'https://cdn.tgdd.vn/Products/Images/54/286087/samsung-galaxy-buds2-pro-r510n-thumb-tim-600x600.jpg', 'Samsung', '18 giờ', 4.6, 1),
-(3, 'JBL Tour Pro 2', 5990000, 6990000, 'https://cdn.tgdd.vn/Products/Images/54/310906/tai-nghe-bluetooth-tws-jbl-tour-pro-2-thumb-600x600.jpg', 'N/A', '40 giờ', 4.7, 0),
-(3, 'Marshall Major IV', 3290000, 3990000, 'https://cdn.tgdd.vn/Products/Images/54/299044/tai-nghe-chup-tai-bluetooth-marshall-major-iv-den-thumb-600x600.jpg', 'N/A', '80 giờ', 4.7, 1),
-(3, 'Sony WF-1000XM5', 5990000, 6990000, 'https://cdn.tgdd.vn/Products/Images/54/311233/tai-nghe-bluetooth-tws-sony-wf-1000xm5-den-thumb-600x600.jpg', 'V2', '24 giờ', 4.7, 1),
-(3, 'AirPods 3 Lightning', 3990000, 4490000, 'https://cdn.tgdd.vn/Products/Images/54/253802/airpods-3-hop-sac-khong-day-thumb-600x600.jpg', 'Apple H1', '30 giờ', 4.8, 1),
-(3, 'OPPO Enco Air3', 1590000, 1990000, 'https://cdn.tgdd.vn/Products/Images/54/303921/oppo-enco-air-3-e3t-trang-thumb-1-600x600.jpg', 'N/A', '25 giờ', 4.5, 0),
-(3, 'SoundPEATS Air3', 890000, 1190000, 'https://cdn.tgdd.vn/Products/Images/54/275922/tai-nghe-bluetooth-tws-soundpeats-air3-den-thumb-600x600.jpg', 'Qualcomm', '17 giờ', 4.4, 0),
-(3, 'JBL Live Pro 2', 2990000, 3990000, 'https://cdn.tgdd.vn/Products/Images/54/286008/jbl-live-pro-2-thumb-600x600.jpg', 'N/A', '40 giờ', 4.5, 0),
-(3, 'Sony INZONE Buds', 4990000, 5490000, 'https://www.sony.com.vn/image/5d02da5df552836db894cead8a68f5f3?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF', 'Sony V1', '12 giờ', 4.8, 0),
-(3, 'Huawei FreeBuds 5i', 1490000, 1890000, 'https://cdn.tgdd.vn/Products/Images/54/302433/huawei-freebuds-5i-xanh-thumb-1-600x600.jpg', 'N/A', '28 giờ', 4.5, 0);
-
--- -----------------------------------------------------------------------
--- 4. ĐỒNG HỒ (Nguồn: TGDD CDN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, battery, rating, is_featured) VALUES
-(4, 'Apple Watch Ultra 2', 21990000, 23990000, 'https://cdn.tgdd.vn/Products/Images/7077/316009/apple-watch-ultra-2-lte-49mm-vien-titan-day-alpine-blue-thumb-600x600.jpg', 'Apple S9', '36 giờ', 5.0, 1),
-(4, 'Galaxy Watch6 Classic', 6990000, 8990000, 'https://cdn.tgdd.vn/Products/Images/7077/308407/samsung-galaxy-watch6-classic-43mm-den-thumb-600x600.jpg', 'Exynos W930', '40 giờ', 4.7, 1),
-(4, 'Garmin Fenix 7 Pro', 23990000, 25990000, 'https://cdn.tgdd.vn/Products/Images/7077/309864/garmin-fenix-7-pro-solar-titanium-47mm-den-thumb-600x600.jpg', 'N/A', '22 ngày', 4.9, 1),
-(4, 'Apple Watch SE 2023', 6190000, 6990000, 'https://cdn.tgdd.vn/Products/Images/7077/316036/apple-watch-se-2023-gps-40mm-vien-nhom-day-silicone-xanh-den-thumb-600x600.jpg', 'Apple S8', '18 giờ', 4.7, 0),
-(4, 'Xiaomi Watch 2', 3990000, 4690000, 'https://cdn.tgdd.vn/Products/Images/7077/322337/xiaomi-watch-2-47-6mm-thumb-600x600.jpg', 'Snapdragon W5', '65 giờ', 4.4, 0),
-(4, 'Huawei Watch GT 4', 4990000, 5990000, 'https://cdn.tgdd.vn/Products/Images/7077/315375/huawei-watch-gt-4-46mm-day-da-nau-thumb-1-600x600.jpg', 'N/A', '14 ngày', 4.5, 1),
-(4, 'Amazfit GTR 4', 4290000, 4990000, 'https://cdn.tgdd.vn/Products/Images/7077/291629/amazfit-gtr-4-46mm-day-da-thumb-1-600x600.jpg', 'N/A', '14 ngày', 4.5, 0),
-(4, 'Garmin Venu 3', 12290000, 12990000, 'https://cdn.tgdd.vn/Products/Images/7077/314359/garmin-venu-3-45mm-day-silicone-den-thumb-1-600x600.jpg', 'N/A', '14 ngày', 4.6, 0),
-(4, 'Samsung Galaxy Fit3', 1190000, 1390000, 'https://cdn.tgdd.vn/Products/Images/7077/322023/samsung-galaxy-fit3-den-thumb-600x600.jpg', 'N/A', '13 ngày', 4.3, 0),
-(4, 'Xiaomi Smart Band 8', 890000, 1090000, 'https://cdn.tgdd.vn/Products/Images/7077/306563/xiaomi-mi-band-8-den-thumb-600x600.jpg', 'N/A', '16 ngày', 4.4, 0),
-(4, 'Garmin Instinct 2X', 11690000, 12690000, 'https://cdn.tgdd.vn/Products/Images/7077/308563/garmin-instinct-2x-solar-tactical-50mm-den-thumb-600x600.jpg', 'N/A', 'Vô hạn', 4.8, 1),
-(4, 'Coros Pace 3', 5990000, 6490000, 'https://cdn.tgdd.vn/Products/Images/7077/316629/coros-pace-3-41-9mm-day-nilon-trang-thumb-1-600x600.jpg', 'N/A', '24 ngày', 4.7, 0);
-
--- -----------------------------------------------------------------------
--- 5. TABLET (Nguồn: TGDD CDN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, ram, screen, battery, rating, is_featured) VALUES
-(5, 'iPad Pro M4 11"', 28990000, 30990000, 'https://cdn.tgdd.vn/Products/Images/522/325513/ipad-pro-11-inch-m4-wifi-black-thumb-600x600.jpg', 'Apple M4', '8GB', '11" OLED', 'N/A', 5.0, 1),
-(5, 'Galaxy Tab S9 Ultra', 24990000, 32990000, 'https://cdn.tgdd.vn/Products/Images/522/308330/samsung-galaxy-tab-s9-ultra-xam-thumb-600x600.jpg', 'SD 8 Gen 2', '12GB', '14.6" AMOLED', '11200mAh', 4.9, 1),
-(5, 'iPad Air 6 M2', 16990000, 18990000, 'https://cdn.tgdd.vn/Products/Images/522/325528/ipad-air-11-inch-m2-wifi-blue-thumb-600x600.jpg', 'Apple M2', '8GB', '11" IPS', 'N/A', 4.8, 1),
-(5, 'Xiaomi Pad 6', 8490000, 9990000, 'https://cdn.tgdd.vn/Products/Images/522/304697/xiaomi-pad-6-grey-thumb-600x600.jpg', 'SD 870', '8GB', '11" 144Hz', '8840mAh', 4.7, 0),
-(5, 'iPad Gen 10', 8990000, 10990000, 'https://cdn.tgdd.vn/Products/Images/522/294106/ipad-gen-10-wifi-bac-thumb-600x600.jpg', 'A14 Bionic', '4GB', '10.9" IPS', 'N/A', 4.6, 1),
-(5, 'Galaxy Tab S9 FE', 7990000, 9990000, 'https://cdn.tgdd.vn/Products/Images/522/315060/samsung-galaxy-tab-s9-fe-wifi-mint-thumb-600x600.jpg', 'Exynos 1380', '6GB', '10.9" 90Hz', '8000mAh', 4.5, 0),
-(5, 'Lenovo Tab M11', 5490000, 6490000, 'https://cdn.tgdd.vn/Products/Images/522/321340/lenovo-tab-m11-thumb-600x600.jpg', 'Helio G88', '4GB', '11" IPS', '7040mAh', 4.3, 0),
-(5, 'iPad Mini 6', 11990000, 13990000, 'https://cdn.tgdd.vn/Products/Images/522/247516/ipad-mini-6-wifi-tim-thumb-600x600.jpg', 'A15 Bionic', '4GB', '8.3" IPS', 'N/A', 4.8, 1),
-(5, 'Galaxy Tab A9+', 4990000, 5990000, 'https://cdn.tgdd.vn/Products/Images/522/316752/samsung-galaxy-tab-a9-plus-wifi-bac-thumb-600x600.jpg', 'SD 695', '4GB', '11" 90Hz', '7040mAh', 4.2, 0),
-(5, 'OPPO Pad Neo', 6490000, 6990000, 'https://cdn.tgdd.vn/Products/Images/522/320750/oppo-pad-neo-thumb-600x600.jpg', 'Helio G99', '6GB', '11.4" 2.4K', '8000mAh', 4.4, 0),
-(5, 'Huawei MatePad 11.5', 6990000, 7490000, 'https://cdn.tgdd.vn/Products/Images/522/318892/huawei-matepad-115-xam-thumb-600x600.jpg', 'SD 7 Gen 1', '6GB', '11.5" 120Hz', '7700mAh', 4.5, 0),
-(5, 'Redmi Pad SE', 4490000, 4990000, 'https://cdn.tgdd.vn/Products/Images/522/314735/xiaomi-redmi-pad-se-gray-thumb-600x600.jpg', 'SD 680', '4GB', '11" 90Hz', '8000mAh', 4.1, 0);
-
--- -----------------------------------------------------------------------
--- 6. CAMERA (Nguồn: Sony/Canon/GoPro Official & Stable CDN - 12 SP)
--- -----------------------------------------------------------------------
-INSERT INTO products (category_id, name, price, old_price, image, chip, battery, rating, is_featured) VALUES
-(6, 'Sony Alpha A6700', 32990000, 35990000, 'https://www.sony.com.vn/image/9cd690293560df7f0820223662d4234c?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF', 'BIONZ XR', '570 shots', 4.9, 1),
-(6, 'Fujifilm X-T5', 43990000, 46990000, 'https://fujifilm-x.com/global/products/cameras/x-t5/img/index/pic_01.png', 'X-Trans 5', '740 shots', 4.8, 1),
-(6, 'Canon EOS R50', 19990000, 22990000, 'https://vn.canon/media/image/2023/02/06/7736076b08074c9394c922c0d329726e_EOS+R50+Black+Front.png', 'DIGIC X', '370 shots', 4.7, 1),
-(6, 'GoPro Hero 12', 9990000, 11990000, 'https://gopro.com/resources/demeter/images/products/HERO12Black/Camera-Float-H12.jpg', 'GP2', 'Enduro', 4.8, 1),
-(6, 'Sony Alpha A7 IV', 56990000, 62990000, 'https://www.sony.com.vn/image/0e873220527020d0763d385799420d2f?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF', 'BIONZ XR', '580 shots', 5.0, 1),
-(6, 'DJI Osmo Action 4', 7990000, 9490000, 'https://dji-official-fe.djicdn.com/dps/50e80902330732d0a48027305260e930.png', 'N/A', '160 phút', 4.6, 1),
-(6, 'Insta360 Ace Pro', 11190000, 11990000, 'https://store.insta360.com/product/ace-pro/assets/ace-pro.png', '5nm AI', '100 phút', 4.7, 1),
-(6, 'Canon EOS R8', 36990000, 39900000, 'https://vn.canon/media/image/2023/02/06/9e308f0603c444249f74f33432222979_EOS+R8+Front.png', 'DIGIC X', '290 shots', 4.7, 0),
-(6, 'Fujifilm X100VI', 44990000, 48990000, 'https://fujifilm-x.com/global/products/cameras/x100vi/img/index/pic_01.png', 'X-Trans 5', '450 shots', 4.9, 1),
-(6, 'Sony ZV-E10', 16990000, 18990000, 'https://www.sony.com.vn/image/b27635a429f59288836d89d36335ce15?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF', 'BIONZ X', '440 shots', 4.5, 0),
-(6, 'Nikon Z f', 48990000, 51990000, 'https://cdn.nikon-asia.com/media/wysiwyg/2023/Zf/Zf_black_front.png', 'EXPEED 7', '380 shots', 4.8, 0),
-(6, 'DJI Pocket 3', 12990000, 14990000, 'https://dji-official-fe.djicdn.com/dps/7c929953239353f2969560527375966c.png', 'N/A', '166 phút', 4.9, 1);
-
 
 
 
