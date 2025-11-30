@@ -1,10 +1,19 @@
 <?php
 session_start();
 
+// Kiểm tra đăng nhập
+require_once '../app/Controllers/AuthController.php';
+$user = AuthController::getCurrentUser();
+if (!$user) {
+    $_SESSION['error'] = 'Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng';
+    header('Location: login.php');
+    exit();
+}
+
 // Kiểm tra request method
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    // Lấy dữ liệu từ Ajax gửi sang
+
+    // Lấy dữ liệu từ form gửi sang
     $id = $_POST['product_id'] ?? null;
     $name = $_POST['product_name'] ?? '';
     $price = $_POST['product_price'] ?? 0;
@@ -30,22 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
         }
 
-        // Tính tổng số lượng sản phẩm trong giỏ để trả về client
-        $total_items = 0;
-        foreach ($_SESSION['cart'] as $item) {
-            $total_items += $item['quantity'];
-        }
-
-        // Trả về JSON thành công
-        echo json_encode([
-            'status' => 'success',
-            'message' => 'Đã thêm sản phẩm vào giỏ!',
-            'total_items' => $total_items
-        ]);
+        // Thông báo thành công
+        $_SESSION['cart_message'] = 'Đã thêm sản phẩm vào giỏ!';
+        header('Location: index.php');
+        exit();
     } else {
         // Lỗi thiếu ID
-        echo json_encode(['status' => 'error', 'message' => 'Lỗi dữ liệu sản phẩm']);
+        $_SESSION['error'] = 'Lỗi dữ liệu sản phẩm';
+        header('Location: index.php');
+        exit();
     }
-    exit();
 }
 ?>

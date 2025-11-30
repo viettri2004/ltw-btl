@@ -4,7 +4,7 @@
 $host = 'localhost';
 $dbname = 'techstore_db';
 $username = 'root'; // Mặc định của XAMPP là root
-$password = '123123';     // Mặc định của XAMPP là rỗng
+$password = '';     // Mặc định của XAMPP là rỗng
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);

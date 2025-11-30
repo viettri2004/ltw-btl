@@ -29,14 +29,16 @@
                     <i class="bi bi-star-fill"></i> <?= $prod['rating'] ?? 5 ?>
                 </div>
                 
-                <button type="button" 
-                        class="btn btn-sm btn-light rounded-circle border btn-add-to-cart"
-                        data-id="<?= $prod['id'] ?>"
-                        data-name="<?= $prod['name'] ?>"
-                        data-price="<?= $prod['price'] ?>"
-                        data-image="<?= $prod['image'] ?? '' ?>">
-                    <i class="bi bi-cart-plus"></i>
-                </button>
+                <form method="post" action="cart_add.php" style="display: inline;">
+                    <input type="hidden" name="product_id" value="<?= $prod['id'] ?>">
+                    <input type="hidden" name="product_name" value="<?= $prod['name'] ?>">
+                    <input type="hidden" name="product_price" value="<?= $prod['price'] ?>">
+                    <input type="hidden" name="product_image" value="<?= $prod['image'] ?? '' ?>">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="btn btn-sm btn-light rounded-circle border">
+                        <i class="bi bi-cart-plus"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

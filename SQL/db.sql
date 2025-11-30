@@ -1,4 +1,8 @@
 -- 1. LÀM SẠCH DATABASE
+CREATE DATABASE IF NOT EXISTS techstore_db 
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE techstore_db;
+
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS product_images; -- Bỏ bảng này vì giờ gộp vào products
 DROP TABLE IF EXISTS products;
@@ -184,6 +188,30 @@ INSERT INTO products (category_id, name, price, old_price, image, image1, image2
 (4, 'Apple Watch Series 8 Thép', 16990000, 19990000, 'pic/product/4100.webp', '', '', '', 'Apple S8', 'N/A', '1.9 inch OLED', '18 giờ', 'Vỏ thép sang trọng, mặt kính Sapphire.', 4.9, 0),
 (4, 'SoundPEATS Watch 4', 890000, 1290000, 'pic/product/4110.webp', '', '', '', 'N/A', 'N/A', '1.85 inch HD', '7 ngày', 'Giá rẻ, đầy đủ tính năng cơ bản.', 4.1, 0),
 (4, 'Masstel Smart Hero 4G', 1990000, 2490000, 'pic/product/4120.webp', '', '', '', 'N/A', 'N/A', '1.4 inch', '2 ngày', 'Đồng hồ định vị trẻ em, hỗ trợ sim 4G.', 4.0, 0);
+
+-- 6. BẢNG ORDERS (Đơn hàng)
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    order_number VARCHAR(50) UNIQUE NOT NULL,
+    total_amount DECIMAL(15, 2) NOT NULL,
+    status ENUM('pending', 'completed', 'cancelled') DEFAULT 'completed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- 7. BẢNG ORDER_ITEMS (Chi tiết đơn hàng)
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT,
+    product_name VARCHAR(255) NOT NULL,
+    price DECIMAL(15, 2) NOT NULL,
+    quantity INT NOT NULL,
+    image VARCHAR(255),
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
+);
 
 -- --- 3. BỔ SUNG CAMERA (Category ID: 6) ---
 -- Lưu ý: ID 6 là Camera. Nếu hệ thống của bạn ID 5 là Camera thì sửa số 6 thành 5.

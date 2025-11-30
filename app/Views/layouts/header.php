@@ -49,10 +49,13 @@
                         <i class="bi bi-clock-history"></i> Lịch sử
                     </a>
 
-                    <?php if(isset($_SESSION['user_id'])): ?>
+                    <?php
+                    require_once dirname(__DIR__, 2) . '/Controllers/AuthController.php';
+                    $currentUser = AuthController::getCurrentUser();
+                    if($currentUser): ?>
                         <div class="dropdown">
                             <a href="#" class="btn btn-outline-dark btn-sm rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="bi bi-person-circle"></i> <?= $_SESSION['user_name'] ?? 'Thành viên' ?>
+                                <i class="bi bi-person-circle"></i> <?= htmlspecialchars($currentUser['full_name']) ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="profile.php">Tài khoản</a></li>
