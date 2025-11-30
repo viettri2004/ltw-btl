@@ -12,19 +12,14 @@ try {
 
     if (!$product) die("Sản phẩm không tồn tại");
 
-    // 2. Xử lý Album ảnh (Gộp ảnh chính + 3 ảnh phụ vào mảng)
+    // 2. Xử lý Album ảnh
     $gallery = [];
     if (!empty($product['image'])) $gallery[] = $product['image'];
     if (!empty($product['image1'])) $gallery[] = $product['image1'];
     if (!empty($product['image2'])) $gallery[] = $product['image2'];
     if (!empty($product['image3'])) $gallery[] = $product['image3'];
 
-    // 3. Lấy sản phẩm liên quan
-    $stmtRel = $conn->prepare("SELECT * FROM products WHERE category_id = :cat_id AND id != :id LIMIT 4");
-    $stmtRel->execute(['cat_id' => $product['category_id'], 'id' => $id]);
-    $related = $stmtRel->fetchAll();
-
-    // 4. Lấy bình luận
+    // 3. Lấy bình luận
     $stmtRev = $conn->prepare("SELECT * FROM reviews WHERE product_id = :pid ORDER BY created_at DESC");
     $stmtRev->execute(['pid' => $id]);
     $reviews = $stmtRev->fetchAll();
@@ -75,21 +70,22 @@ include '../app/Views/layouts/header.php';
                 </table>
             </div>
 
-            <form action="cart_add.php" method="POST">
-                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                <input type="hidden" name="product_name" value="<?= $product['name'] ?>">
-                <input type="hidden" name="product_price" value="<?= $product['price'] ?>">
-                <input type="hidden" name="product_image" value="<?= $product['image'] ?>">
-                
-                <div class="d-flex gap-3 align-items-center mb-4">
-                    <div class="input-group" style="width: 120px;">
-                        <button type="button" class="btn btn-outline-secondary" onclick="this.nextElementSibling.value--">-</button>
-                        <input type="number" name="quantity" class="form-control text-center" value="1" min="1">
-                        <button type="button" class="btn btn-outline-secondary" onclick="this.previousElementSibling.value++">+</button>
-                    </div>
-                    <button type="submit" class="btn btn-danger btn-lg flex-grow-1"><i class="bi bi-cart-plus"></i> THÊM VÀO GIỎ</button>
+            <div class="d-flex gap-3 align-items-center mb-4">
+                <div class="input-group" style="width: 120px;">
+                    <button type="button" class="btn btn-outline-secondary" onclick="updateQty(-1)">-</button>
+                    <input type="number" id="qtyInput" class="form-control text-center" value="1" min="1">
+                    <button type="button" class="btn btn-outline-secondary" onclick="updateQty(1)">+</button>
                 </div>
-            </form>
+                
+                <button type="button" 
+                        class="btn btn-danger btn-lg flex-grow-1 btn-add-to-cart-detail"
+                        data-id="<?= $product['id'] ?>"
+                        data-name="<?= $product['name'] ?>"
+                        data-price="<?= $product['price'] ?>"
+                        data-image="<?= $product['image'] ?>">
+                    <i class="bi bi-cart-plus"></i> THÊM VÀO GIỎ
+                </button>
+            </div>
         </div>
     </div>
 
@@ -108,7 +104,6 @@ include '../app/Views/layouts/header.php';
                 <form action="submit_review.php" method="POST" class="mb-4">
                     <input type="hidden" name="product_id" value="<?= $id ?>">
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Viết bình luận của bạn:</label>
                         <textarea name="comment" class="form-control" rows="3" required placeholder="Sản phẩm này thế nào?"></textarea>
                     </div>
                     <div class="row">
@@ -120,8 +115,6 @@ include '../app/Views/layouts/header.php';
                                 <option value="5">⭐⭐⭐⭐⭐ (Tuyệt vời)</option>
                                 <option value="4">⭐⭐⭐⭐ (Tốt)</option>
                                 <option value="3">⭐⭐⭐ (Bình thường)</option>
-                                <option value="2">⭐⭐ (Tệ)</option>
-                                <option value="1">⭐ (Rất tệ)</option>
                             </select>
                         </div>
                     </div>
@@ -149,4 +142,72 @@ include '../app/Views/layouts/header.php';
     </div>
 </div>
 
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle-fill me-2"></i> Đã thêm sản phẩm vào giỏ!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
 <?php include '../app/Views/layouts/footer.php'; ?>
+
+<script>
+    // Hàm tăng giảm số lượng
+    function updateQty(change) {
+        let input = document.getElementById('qtyInput');
+        let newVal = parseInt(input.value) + change;
+        if (newVal >= 1) input.value = newVal;
+    }
+
+    // Xử lý sự kiện click nút Mua Ngay
+    document.querySelector('.btn-add-to-cart-detail').addEventListener('click', function() {
+        const btn = this;
+        const qty = document.getElementById('qtyInput').value;
+        const originalText = btn.innerHTML;
+
+        // Hiệu ứng Loading
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Đang xử lý...';
+        btn.disabled = true;
+
+        // Chuẩn bị dữ liệu gửi đi
+        const formData = new FormData();
+        formData.append('product_id', btn.getAttribute('data-id'));
+        formData.append('product_name', btn.getAttribute('data-name'));
+        formData.append('product_price', btn.getAttribute('data-price'));
+        formData.append('product_image', btn.getAttribute('data-image'));
+        formData.append('quantity', qty); // Lấy số lượng từ input
+
+        // Gửi AJAX
+        fetch('cart_add.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Cập nhật Badge trên Header
+                const badge = document.getElementById('cart-badge');
+                if (badge) badge.innerText = data.total_items;
+
+                // Hiện Toast thông báo
+                const toastEl = document.getElementById('liveToast');
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            } else {
+                alert('Lỗi: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Lỗi kết nối server');
+        })
+        .finally(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    });
+</script>
