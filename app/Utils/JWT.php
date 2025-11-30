@@ -1,8 +1,7 @@
 <?php
-// app/Utils/JWT.php
 
 class JWT {
-    private static $secret = 'your-secret-key-here'; // Change this to a secure key
+    private static $secret = 'your-secret-key-here'; 
 
     public static function encode($payload) {
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
